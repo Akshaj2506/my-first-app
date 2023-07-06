@@ -1,14 +1,16 @@
 import './App.css';
+// import About from './components/About';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
+
 function App() {
   return (
-      <>
-      {/* <Navbar myName="Akshaj's Web" aboutText="About Us"/> */}
+    <>
       <Navbar />
       <TextForm heading="Analyse text below"/>
-      </>
-    );
+      {/* <About /> */}
+    </>
+  );
 }
 
 export default App;
