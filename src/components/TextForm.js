@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
 export default function TextForm(props) {
+   const [text, setText] = useState("");
 
    const handleOnClickUpper = () => {
       setText(text.toUpperCase());
@@ -11,9 +12,26 @@ export default function TextForm(props) {
    const handleChange = (event) => {
       setText(event.target.value);
    }
+   const isAlphaNumeric = (str) => {
+      var code, i, len;
+
+      for (i = 0, len = str.length; i < len; i++) {
+         code = str.charCodeAt(i);
+         if (!(code > 47 && code < 58) && // numeric (0-9)
+            !(code > 64 && code < 91) && // upper alpha (A-Z)
+            !(code > 96 && code < 123)) { // lower alpha (a-z)
+            return false;
+         }
+      }
+      return true;
+   };
    const setWordCount = () => {
+      const words = text.split(" ");
+      words.forEach((word, i) => {
+         if (word === '') words.splice(i);
+      })
+      return words.length;
    }
-   const [text, setText] = useState("");
    return (
       <>
          <div className="container">
@@ -26,8 +44,8 @@ export default function TextForm(props) {
          </div>
          <div className={`container text-${props.mode === 'light' ? 'dark' : 'light'}`}>
             <h2 className="my-1">Your Text Summary</h2>
-            <p>{text.split(" ").length} words and {text.length} characters</p>
-            <p>Time taken to read: Approximately {(text.split(" ").length * 0.34)/60} minutes</p>
+            <p>{setWordCount()} words and {text.length} characters</p>
+            <p>Time taken to read: Approximately {(text.split(" ").length * 0.34) / 60} minutes</p>
             <h2 className="my-1">Preview</h2>
             <p>{text.length > 0 ? text : "Enter text in the textbox above to preview"}</p>
          </div>
