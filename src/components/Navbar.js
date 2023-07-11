@@ -1,6 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 export default function Navbar(uiProps) {
+   const setBackgroundColor = (event, color ="#333") => {
+      event.target.checked ? uiProps.setCustomBg(color) : uiProps.setCustomBg('');
+      if (uiProps.customBg === '') {
+         uiProps.handleUiToggle();
+      } else {
+         document.body.style.backgroundColor = uiProps.customBg;
+      }
+   }
    return (
       <>
          <nav className={`navbar navbar-expand-lg navbar-${uiProps.mode} bg-${uiProps.mode}`}>
@@ -18,9 +26,12 @@ export default function Navbar(uiProps) {
                         <a className="nav-link" href="/">{uiProps.aboutText}</a>
                      </li>
                   </ul>
-                     <div className="d-flex form-check form-switch" onChange={uiProps.toggleUi}>
-                        <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"/>
-                     </div>
+                  <div className="d-flex form-check form-switch" >
+                     <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onChange={event => setBackgroundColor(event, "#2fe4")}/>
+                  </div>
+                  <div className="d-flex form-check form-switch" onChange={uiProps.toggleUi}>
+                     <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault1"/>
+                  </div>
                   <form className="d-flex" role="search">
                      <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                      <button className="btn btn-outline-success" type="submit">Search</button>
@@ -38,6 +49,6 @@ Navbar.propTypes = {
 }
 
 Navbar.defaultProps = {
-   myName : "Set Name Here",
+   myName: "Set Name Here",
    aboutText: "About here"
 }

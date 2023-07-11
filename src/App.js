@@ -9,6 +9,7 @@ function App() {
   const [darkMode, setDarkMode] = useState('light');
   const [uiButtonText, setUiButtonText] = useState('Enable Dark Mode');
   const [alert, setAlert] = useState(null);
+  const [customBg, setCustomBg] = useState('');
 
   const displayAlert = (message, type) => {
     setAlert({
@@ -38,9 +39,9 @@ function App() {
 
   return (
     <>
-      <Navbar mode={darkMode} toggleUi={handleUiToggle}/>
-      <Alert alert={alert}/>
-      <TextForm heading="Analyse text below" mode={darkMode}/>
+      <Navbar mode={darkMode} toggleUi={handleUiToggle} customBg={customBg} setCustomBg={setCustomBg} handleUiToggle={handleUiToggle}/>
+      <Alert alert={alert} />
+      <TextForm heading="Analyse text below" mode={darkMode} />
       {/* <About /> */}
       <div className="container">
         <button onClick={handleUiToggle} className='btn btn-primary'>{uiButtonText}</button>

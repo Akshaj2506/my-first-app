@@ -11,6 +11,8 @@ export default function TextForm(props) {
    const handleChange = (event) => {
       setText(event.target.value);
    }
+   const setWordCount = () => {
+   }
    const [text, setText] = useState("");
    return (
       <>
