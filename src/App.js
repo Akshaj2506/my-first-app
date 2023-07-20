@@ -25,12 +25,14 @@ function App() {
     if (darkMode === "dark") {
       setDarkMode("light");
       setUiButtonText("Enable Dark Mode");
+      document.title = "TextUtils";
       document.body.style.backgroundColor = "white";
       document.documentElement.setAttribute('data-bs-theme', 'light');
       displayAlert("Light Mode Enabled", "success");
     } else {
       setDarkMode("dark");
       setUiButtonText("Enable Light Mode");
+      document.title = "TextUtils- Dark Mode";
       document.body.style.backgroundColor = "#222";
       document.documentElement.setAttribute('data-bs-theme', 'dark');
       displayAlert("Dark Mode Enabled", "info");
