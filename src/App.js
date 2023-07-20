@@ -1,10 +1,15 @@
 import { useState } from 'react';
 import './App.css';
-// import About from './components/About';
+import About from './components/About';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import Alert from './components/Alert';
-
+import {
+  BrowserRouter as Router,
+  Routes,
+  Link,
+  Route
+} from 'react-router-dom';
 function App() {
   const [darkMode, setDarkMode] = useState('light');
   const [uiButtonText, setUiButtonText] = useState('Enable Dark Mode');
@@ -41,13 +46,17 @@ function App() {
 
   return (
     <>
-      <Navbar mode={darkMode} toggleUi={handleUiToggle} customBg={customBg} setCustomBg={setCustomBg} handleUiToggle={handleUiToggle}/>
-      <Alert alert={alert} />
-      <TextForm heading="Analyse text below" mode={darkMode} />
-      {/* <About /> */}
-      <div className="container">
-        <button onClick={handleUiToggle} className='btn btn-primary'>{uiButtonText}</button>
-      </div>
+      <Router>
+        <Navbar mode={darkMode} toggleUi={handleUiToggle} customBg={customBg} setCustomBg={setCustomBg} handleUiToggle={handleUiToggle} />
+        <Alert alert={alert} />
+        {/* <div className="container">
+          <button onClick={handleUiToggle} className='btn btn-primary'>{uiButtonText}</button>
+        </div> */}
+        <Routes>
+          <Route exact path='/about' element={<About />}/>
+          <Route exact path='/' element={<TextForm heading="Analyse text below" mode={darkMode} />}/>
+        </Routes>
+      </Router>
     </>
   );
 }
