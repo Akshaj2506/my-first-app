@@ -48,11 +48,11 @@ function App() {
   return (
     <>
       <Router>
-        <Navbar mode={darkMode} toggleUi={handleUiToggle} customBg={customBg} setCustomBg={setCustomBg} handleUiToggle={handleUiToggle} />
+        <Navbar mode={darkMode} toggleUi={handleUiToggle} customBg={customBg} setCustomBg={setCustomBg} handleUiToggle={handleUiToggle} myName="TextUtils"/>
         <Alert alert={alert} />
         <Routes>
           <Route exact path='/about' element={<About />}/>
-          <Route exact path='/' element={<TextForm heading="Analyse text below" mode={darkMode} />}/>
+          <Route exact path='/' element={<TextForm heading="Count words and Characters below" mode={darkMode} />}/>
         </Routes>
         <div className="container">
           <button onClick={handleUiToggle} className='btn btn-primary'>{uiButtonText}</button>
