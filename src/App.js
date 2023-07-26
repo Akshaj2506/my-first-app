@@ -7,7 +7,6 @@ import Alert from './components/Alert';
 import {
   BrowserRouter as Router,
   Routes,
-  Link,
   Route
 } from 'react-router-dom';
 function App() {
@@ -33,6 +32,7 @@ function App() {
       document.title = "TextUtils";
       document.body.style.backgroundColor = "white";
       document.documentElement.setAttribute('data-bs-theme', 'light');
+      document.getElementById("flexSwitchCheckDefault1").checked = false;
       displayAlert("Light Mode Enabled", "success");
     } else {
       setDarkMode("dark");
@@ -40,6 +40,7 @@ function App() {
       document.title = "TextUtils- Dark Mode";
       document.body.style.backgroundColor = "#222";
       document.documentElement.setAttribute('data-bs-theme', 'dark');
+      document.getElementById("flexSwitchCheckDefault1").checked = true;
       displayAlert("Dark Mode Enabled", "info");
     }
   }
@@ -49,13 +50,13 @@ function App() {
       <Router>
         <Navbar mode={darkMode} toggleUi={handleUiToggle} customBg={customBg} setCustomBg={setCustomBg} handleUiToggle={handleUiToggle} />
         <Alert alert={alert} />
-        {/* <div className="container">
-          <button onClick={handleUiToggle} className='btn btn-primary'>{uiButtonText}</button>
-        </div> */}
         <Routes>
           <Route exact path='/about' element={<About />}/>
           <Route exact path='/' element={<TextForm heading="Analyse text below" mode={darkMode} />}/>
         </Routes>
+        <div className="container">
+          <button onClick={handleUiToggle} className='btn btn-primary'>{uiButtonText}</button>
+        </div>
       </Router>
     </>
   );

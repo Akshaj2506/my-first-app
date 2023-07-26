@@ -1,35 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 export default function About() {
-   const [uiMode, setUiMode] = useState({
-      backgroundColor: "white",
-      color: "#222"
-   })
-   const [uiModeButtonText, setUiModeButtonText] = useState("Enable Dark Mode");
-
-   // To toggle dark/light mode
-   const toggleDarkMode = () => {
-      if (uiMode.color === "#222") {
-         setUiMode({
-            backgroundColor: "#121212",
-            color: "white"
-         })
-         setUiModeButtonText("Enable Light Mode")
-      } else {
-         setUiMode({
-            backgroundColor: "white",
-            color: "#222"
-         })
-         setUiModeButtonText("Enable Dark Mode")
-      }
-   }
    return (
-      <div className="container my-3" style={uiMode}>
+      <div className="container my-3">
          <h2>About Us</h2>
-         <div className="accordion" id="accordionExample" style={uiMode}>
-            <div className="accordion-item" style={uiMode}>
-               <h2 className="accordion-header" style={uiMode}>
-                  <button className="accordion-button" style={uiMode} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+         <div className="accordion" id="accordionExample">
+            <div className="accordion-item">
+               <h2 className="accordion-header">
+                  <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                      Accordion Item #1
                   </button>
                </h2>
@@ -40,7 +18,6 @@ export default function About() {
                </div>
             </div>
          </div>
-         <button className='btn btn-primary' onClick={toggleDarkMode}>{uiModeButtonText}</button>
       </div>
    )
 }

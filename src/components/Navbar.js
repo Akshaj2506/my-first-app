@@ -2,14 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
 export default function Navbar(uiProps) {
-   const setBackgroundColor = (event, color ="#333") => {
-      event.target.checked ? uiProps.setCustomBg(color) : uiProps.setCustomBg('');
-      if (uiProps.customBg === '') {
-         uiProps.handleUiToggle();
-      } else {
-         document.body.style.backgroundColor = uiProps.customBg;
-      }
-   }
    return (
       <>
          <nav className={`navbar navbar-expand-lg navbar-${uiProps.mode} bg-${uiProps.mode}`}>
@@ -27,9 +19,6 @@ export default function Navbar(uiProps) {
                         <Link className="nav-link" to="/about">{uiProps.aboutText}</Link>
                      </li>
                   </ul>
-                  <div className="d-flex form-check form-switch" >
-                     <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onChange={event => setBackgroundColor(event, "#2fe4")}/>
-                  </div>
                   <div className="d-flex form-check form-switch" onChange={uiProps.toggleUi}>
                      <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault1"/>
                   </div>
