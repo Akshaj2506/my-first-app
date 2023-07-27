@@ -13,7 +13,7 @@ export default function TextForm(props) {
       setText(event.target.value);
    }
    const setWordCount = () => {
-      const words = text.split(" ");
+      const words = text.split(/\s+/);
       words.forEach((word, i) => {
          if (word === '') words.splice(i);
       })
@@ -32,7 +32,8 @@ export default function TextForm(props) {
          <div className={`container text-${props.mode === 'light' ? 'dark' : 'light'}`}>
             <h2 className="my-1">Your Text Summary</h2>
             <p>{setWordCount()} words and {text.length} characters</p>
-            <p>Time taken to read: Approximately {text.length !== 0 ? ((text.split(" ").length * 0.34) / 60).toFixed(3) : 0} minutes</p>
+            <p>Time taken to read: Approximately {text.length !== 0 ? ((text.split(/\s+/).length * 0.34) / 60).toFixed(3) : 0} minutes</p>
+            {/* "/\s+/" regex command has been used to keep track of all the spaces in the text including new lines and + sign refers to more than 1 */}
             <h2 className="my-1">Preview</h2>
             <p>{text.length > 0 ? text : "Enter text in the textbox above to preview"}</p>
          </div>
